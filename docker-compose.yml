@@ -1,0 +1,22 @@
+services:
+  PythonDB:
+    container_name: Python-Postgres
+    image: postgres:16.2
+    restart: always
+    ports:
+      - 5001:5432
+    environment:
+      POSTGRES_DB: PythonDB
+      POSTGRES_PASSWORD: byronodmon
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  adminer:
+    container_name: Python-Adminer
+    image: adminer
+    restart: always
+    ports:
+      - 4321:8080
+
+volumes:
+  pgdata:
